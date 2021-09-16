@@ -1,0 +1,80 @@
+
+
+<head>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+    .myButton {
+	background-color:#44c767;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+  </style>
+</head>
+
+
+<div class="container">
+
+  <div class="row">
+<br><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Your Children</h6>
+
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+
+          <tr>
+            <th>User ID</th>
+            <th>Roll Number</th>
+            <th>Class</th>
+            <th>Fee</th>
+              <th>Mobile</th>
+              <th>Quiz Result</th>
+          </tr>
+        </thead>
+        {% for c in student %}
+         <tr>
+          <td> {{c.user_id}}</td>
+          <td>{{c.roll}}</td>
+          <td>{{c.cl}}</td>
+          <td>{{c.fee}}</td>
+          <td>{{c.mobile}}</td>
+             <td><a  href="{% url 'parent_view_quizresult_filtered' c.roll  %}">View Quiz Result</a></td>
+        </tr>
+
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>

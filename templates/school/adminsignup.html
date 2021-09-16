@@ -1,0 +1,177 @@
+
+<!doctype html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <script src="https://kit.fontawesome.com/982d9630c6.js" crossorigin="anonymous"></script>
+
+   <!-- Google Font Root Link -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+
+<title>Add New Account</title>
+<script type="text/javascript">
+function validate()
+{
+var id=document.signup.id.value;
+var name=document.signup.name.value;
+var email=document.signup.email.value;
+var phnum=document.signup.phnum.value;
+var sub=document.signup.sub.value;
+var dept=document.signup.dept.value;
+var pos=document.signup.pos.value;
+var pass=document.signup.pass.value;
+if(id=="")
+	{
+	alert("Id field should not be empty");
+	document.signup.id.focus();
+	return false;
+
+	}
+else if(name=="")
+	{
+	alert("Name field should not be empty");
+	document.signup.name.focus();
+	return false;
+	}
+else if(email=="")
+{
+alert("Email field should not be empty");
+document.signup.email.focus();
+return false;
+}
+else if(phnum=="")
+{
+alert("Phone Number field should not be empty");
+document.signup.phnum.focus();
+return false;
+}
+else if(sub=="")
+{
+alert("Subject field should not be empty");
+document.signup.sub.focus();
+return false;
+}
+else if(dept=="")
+{
+alert("Department field should not be empty");
+document.signup.dept.focus();
+return false;
+}
+else if(pos=="")
+{
+alert("Position field should not be empty");
+document.signup.pos.focus();
+return false;
+}
+else if(pass=="")
+{
+alert("Password field should not be empty");
+document.signup.pass.focus();
+return false;
+}
+if(pass.length<8)
+	{
+	alert("Password Should be 8 characters long");
+	document.signup.pass.focus();
+	return false;
+	}
+}
+</script>
+<style>
+
+	/* Styles for Navbar */
+	.bg-light {
+		background-color: #ffffff!important;
+		box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+	}
+	.nav_bar_title {
+		font-size: 25px;
+	}
+
+	@media (max-width: 768px) {
+		.nav_bar_title {
+			font-size: 20px;
+		}
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: #ffffff;
+	}
+
+	#login .container #login-row #login-column #login-box {
+		max-width: 600px;
+		background-color: #ffffff;
+	}
+
+	#login .container #login-row #login-column #login-box #login-form {
+		padding: 20px;
+	}
+
+	#login .container #login-row #login-column #login-box #login-form #register-link {
+		margin-top: -85px;
+	}
+
+	form label {
+		font-weight:bold;
+	}
+	.login_button {
+    background-color: #7e57c2;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+  }
+</style>
+</head>
+<body>
+{% include "school/navbar.html" %}
+    	<div id="login" style="padding-top: 50px; padding-bottom: 50px;">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12" style="border-radius: 5px;">
+                        <form id="login-form" class="form" name="signup"  method="post" onsubmit="return validate()">
+                             {% csrf_token %}
+                            <h3 class="text-center text-info"><i class="fas fa-user-plus"></i> <b> Admin Sign-Up </b> </h3>
+
+                            <div class="form-group">
+                                <label for="pass" class="text-info"><i class="fas fa-user"></i> First Name:</label><br>
+                                {% render_field form.first_name class="form-control" placeholder="First Name" %}
+                            </div>
+                             <div class="form-group">
+                                <label for="pass" class="text-info"><i class="far fa-user"></i> Last Name:</label><br>
+                                 {% render_field form.last_name class="form-control" placeholder="Last Name" %}
+
+                            </div>
+                             <div class="form-group">
+                                <label for="pass" class="text-info"><i class="fas fa-fingerprint"></i> User Name:</label><br>
+                                {% render_field form.username class="form-control" placeholder="Username" %}
+                            </div>
+                             <div class="form-group">
+                                <label for="pass" class="text-info"><i class="fas fa-key"></i> Password:</label><br>
+                                {% render_field form.password class="form-control" placeholder="Password" %}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="submit" class="btn btn-info"><i class="fa fa-user-plus" aria-hidden="true"></i> <b> Add Account </b> </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

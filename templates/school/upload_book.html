@@ -1,0 +1,194 @@
+{% extends "school/adminbase.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<style>
+  span {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+.myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 4px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+input {
+    border: 2px solid white;
+    -webkit-box-shadow:
+      inset 0 0 5px  rgba(0,0,0,0.2),
+            0 0 10px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 10px rgba(0,0,0,0.1);
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 2px 0;
+}
+
+</style>
+<div class="limiter">
+  <div class="container-login100" style="background-color: #e3f2fd;">
+    <div class="wrap-login100 p-l-40 p-r-40 p-t-55 p-b-55" style="border-color: #64b5f6;">
+      <form class="login100-form validate-form flex-sb flex-w" method="POST" action="" enctype="multipart/form-data">
+        <h1 align="center" style="font-family:system-ui">Upload a Book || Learning Space</h1>
+        {% csrf_token %}
+        <table align="center">
+          <tr><td>
+        <span class="txt1 p-b-11">
+          <i class="fab fa-ideal"></i>&nbsp;Book ID :
+        </span></td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input class="input100" name="book_id" required id="id_book_id" placeholder="Book ID">
+          <span class="focus-input100"></span>
+        </div>
+            </td>
+          </tr>
+          <tr><td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-book"></i>&nbsp;Book Name :
+        </span></td><td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input class="input100" name="book_name" required id="id_book_name" placeholder="Book Name">
+          <span class="focus-input100"></span>
+        </div>
+          </td>
+        </tr>
+          <tr>
+            <td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-feather-alt"></i>&nbsp;Book Author :
+        </span>
+              </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input class="input100" name="book_author" required id="id_book_author" placeholder="Book Author">
+          <span class="focus-input100"></span>
+        </div>
+            </td>
+        </tr>
+          <tr>
+            <td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-calendar-day"></i>&nbsp;Book Publish Date :
+        </span>
+              </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input class="input100" name="book_pub_date" required id="id_book_pub_date" placeholder="Book Publish Date">
+          <span class="focus-input100"></span>
+        </div>
+            </td>
+        </tr>
+          <tr>
+            <td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-align-left"></i>&nbsp;Book Description :
+        </span>
+              </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <textarea class="input100" name="book_desc" maxlength="200" style="padding: 15px 25px 0 25px; height: 150px;"  placeholder="Book Description" id="id_book_desc" required>{{task.description}}</textarea>
+          <span class="focus-input100"></span>
+        </div>
+            </td>
+        </tr>
+          <tr>
+            <td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-tags"></i>&nbsp;Book Tags :
+        </span>
+              </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20" style="display: flex;">
+          <input class="input100" name="book_tag1" maxlength="20" required id="id_book_tag1" placeholder="Book Tag 1">
+          <span class="focus-input100"></span>
+          <input class="input100" name="book_tag2" maxlength="20" required id="id_book_tag2" placeholder="Book Tag 2">
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input m-b-20" style="display: flex;">
+          <input class="input100" name="book_tag3" maxlength="20" required id="id_book_tag3" placeholder="Book Tag 3">
+          <span class="focus-input100"></span>
+          <input class="input100" name="book_tag4" maxlength="20" required id="id_book_tag4" placeholder="Book Tag 4">
+          <span class="focus-input100"></span>
+        </div>
+            </td>
+        </tr>
+          <tr>
+            <td>
+        <span class="txt1 p-b-11">
+          <i class="fas fa-image"></i>&nbsp;Upload Book Cover :
+        </span>
+            </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input type="file" name="book_pic" id="id_book_pic" hidden/>
+          <button class="myButton" type="button"><label for="id_book_pic">Choose Image</label></button>
+          <span id="file-chosen"><b>No Image Chosen</b></span>
+        </div>
+            </td>
+            </tr>
+          <tr>
+            <td>
+          <span class="txt1 p-b-11">
+          <i class="fas fa-file"></i>&nbsp;Upload Book File :
+        </span>
+            </td>
+            <td>
+        <div class="wrap-input100 validate-input m-b-20">
+          <input type="file" name="book_file" id="id_book_file" hidden/>
+          <button class="myButton" type="button"><label for="id_book_file">Choose File</label></button>
+          <span id="file-chosen2"><b>No File Chosen</b></span>
+        </div>
+            </td>
+          </tr>
+          <tr><td><h1></h1></td></tr>
+          <tr><td></td><td>
+            <div class="container-login100-form-btn" style="justify-content: space-between">
+          <button  style="border-radius: 6px; background-color: #ef5350;" type="submit" value="">
+            <i class="fas fa-file-upload"></i>&nbsp;Upload Book
+          </button>
+        </div>
+          </td></tr>
+          </table>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br>
+<script>
+    const actualBtn = document.getElementById('id_book_pic');
+    const fileChosen = document.getElementById('file-chosen');
+    actualBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
+
+    const actualBtn2 = document.getElementById('id_book_file');
+    const fileChosen2 = document.getElementById('file-chosen2');
+    actualBtn2.addEventListener('change', function(){
+      fileChosen2.textContent = this.files[0].name
+    })
+</script>
+<!--{% endblock %}-->

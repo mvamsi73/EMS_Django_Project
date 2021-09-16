@@ -1,0 +1,272 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en">
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <script src="https://kit.fontawesome.com/982d9630c6.js" crossorigin="anonymous"></script>
+
+   <!-- Google Font Root Link -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+   <title>HOME</title>
+</head>
+
+<style>
+	/* Styles for Navbar */
+	.bg-light {
+		background-color: #ffffff!important;
+		box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+	}
+	.nav_bar_title {
+		font-size: 25px;
+	}
+
+	@media (max-width: 768px) {
+		.nav_bar_title {
+			font-size: 20px;
+		}
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: #ffffff;
+	}
+
+	#login .container #login-row #login-column #login-box {
+		max-width: 600px;
+		background-color: #ffffff;
+	}
+
+	#login .container #login-row #login-column #login-box #login-form {
+		padding: 20px;
+	}
+
+	#login .container #login-row #login-column #login-box #login-form #register-link {
+		margin-top: -85px;
+	}
+
+	form label {
+		font-weight:bold;
+	}
+   .login_button {
+    background-color: #7e57c2;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif;
+  }
+
+      /* Float four columns side by side */
+    .column {
+        float:inherit;
+        width: 33%;
+        padding: 0 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding */
+    .row {margin: 0 -5px;}
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+    .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Style the counter cards */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #ffffff;
+        max-height: auto;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px) scale(1.04) translateZ(0);
+    }
+    .profile_image {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .w3-panel p {
+      padding-top: 10px;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+    .column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+   <nav class="navbar sticky-top navbar-light bg-light" style="padding: 18px;">
+      <div class="navbar-brand">
+          <span style="font-weight: 500; font-family: 'Cabin', sans-serif; display: flex; color: #3c4043;" class="nav_bar_title">
+              <h2 align="center">Learning Space - Admin Dashboard</h2>
+          </span>
+
+
+
+
+      </div>
+
+      <div>
+          <span style="font-weight: 500; font-family: 'Cabin', sans-serif; display: flex; color: #3c4043;" class="nav_bar_title">
+              <h4>Admin Name : {{request.user.first_name}}</h4>
+          </span>
+          <a href="./logout" style="color: white; text-decoration: none;" class="login_button"><b>Logout</b></a>
+      </div>
+  </nav>
+   {%include 'school/admin_dashboard_cards.html'%}
+    <div style="padding: 50px;">
+      <div class="row" style="display: flex; justify-content: center; flex-wrap: wrap;">
+        <div class="column">
+            <div class="card" onclick="document.location='admin-teacher'">
+              <h1><i class="fas fa-chalkboard-teacher" style="font-size:100px;color:black"></i><span> Teacher</span></h1>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" onclick="document.location='admin-student'">
+              <h1><i class="fas fa-user-graduate" style="font-size:100px;color:blue"></i><span> Student</span></h1>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" onclick="document.location='admin-attendance'">
+              <h1><i class="fas fa-address-card" style="font-size:100px;color:#7a858f"></i><span> Attendance</span></h1>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" onclick="document.location='admin-fee'">
+              <h1><i class="fas fa-search-dollar" style="font-size:100px;color:#ff8f4d"></i><span> Fee</span></h1>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" onclick="document.location='admin_add_course'">
+              <h1><i class="fas fa-folder-plus" style="font-size:100px;color:#0c5460"></i><span> Courses</span></h1>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card" onclick="document.location='admin-notice'">
+              <h1><i class="fas fa-bullhorn" style="font-size:100px;color:#955cc0"></i><span> Notice</span></h1>
+            </div>
+        </div>
+          <div class="column">
+            <div class="card" onclick="document.location='view_book'">
+              <h1><i class="fas fa-book" style="font-size:100px;color:#7ed3cf"></i><span> Library</span></h1>
+            </div>
+          </div>
+          <div class="column">
+            <div class="card" onclick="document.location='upload_book'">
+              <h1><i class="fas fa-book-medical" style="font-size:100px;color:#6ce16f"></i><span> Add new Book to Library</span></h1>
+          </div>
+        </div>
+          <div class="column">
+            <div class="card" onclick="document.location='parent'">
+              <h1><i class="fas fa-user-tie" style="font-size:100px;color:#e16c6c"></i><span> Parent</span></h1>
+          </div>
+        </div>
+      </div>
+   <h1 align="center">DATA VISUALIZATION</h1><br><hr>
+   <div class="row">
+  <div class="column">
+    <img src="data:image/>png;base64,{{stucnt_vs_faccnt_pie | safe}}" style="width:100%">
+  </div>
+  <div class="column">
+        <img src="data:image/>png;base64,{{avg_attendance | safe}}" style="width:100%">  </div>
+</div>
+   <hr><hr>
+<div class="row">
+  <div class="column">
+    <img src="data:image/>png;base64,{{stu_reg_in_courses | safe}}" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="data:image/>png;base64,{{teacher_reg_in_courses | safe}}" style="width:100%">
+  </div>
+</div>
+<hr><hr>
+   <div class="row">
+  <div class="column">
+    <img src="data:image/>png;base64,{{attendance_pie_chart | safe}}" style="width:130%">
+  </div>
+       <div class="column">
+<!--    <img src="data:image/>png;base64,{{attendance_pie_chart | safe}}" style="width:100%">-->
+  </div>
+
+</div>
+
+   <hr><hr>
+
+   <div class="w3-panel w3-blue ">
+  <p align="center">Notice Board</p>
+</div><br>
+{%for n in notice%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>{{n.date}} ||By :{{n.by}} </strong><br> {{n.message}}
+</div>
+{%endfor%}
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Description" content="OnCl - Edu. Cloud is a Educational Cloud Application which helps students, faculty and others who are in the learning world.">
+    <!-- Theme Color above the Navbar in Mobile Phones -->
+    <meta name="theme-color" content="#5f95eb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheet for Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- FontAwesome Icons -->
+    <script src="{% static 'oncl_app/font_awesome.js' %}"></script>
+
+    <!-- Google Font Root Link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Font Style for Navbar -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <!-- Font Style for Cards -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Jquery Link -->
+    <!-- Styles for Content -->
+    <!-- Cache Controller -->
+    <meta http-equiv="Cache-Control: max-age=31536000" content="public">
+
+  <style>
+/* Styles for Navbar */
+.bg-light {
+  background-color: #ffffff!important;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+
+/* Styles for Navbar Logo */
+.header_img {
+  height: 30px;
+  width: 30px;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+  .header_img {
+    height: 25px;
+    width: 25px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header_img {
+    height: 22.5px;
+    width: 22.5px;
+    margin-bottom: 3px;
+  }
+}
+
+@media (max-width: 281px) {
+  .hidden_text {
+    font-size: 1.15rem;
+  }
+
+  a.navbar-brand {
+    margin-right: 4px;
+  }
+
+  .header_img {
+    height: 20px;
+    width: 20px;
+    margin-bottom: 4px;
+  }
+}
+
+.navbar-brand {
+    margin-right: 0rem;
+}
+
+@media (max-width: 321px) {
+  .header_img {
+    height: 22.5px;
+    width: 22.5px;
+    margin-bottom: 4px;
+  }
+}
+
+#headername {
+  font-size: 1.6rem;
+}
+
+@media (max-width: 375px) {
+  #headername {
+    font-size: 1.3rem;
+  }
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 5px;}
+      .User-area {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    cursor: pointer;
+}
+  .User-area > .User-avtar {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 12px -5px #000;
+}
+  .User-area > .User-avtar > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+  .User-avtar .badge {
+    position: absolute;
+    right: -5px;
+    bottom: -2px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+}
+  .User-avtar .badge i {
+    font-weight: normal;
+    font-size: 11px;
+    margin-left: 4px;
+    margin-top: 5px;
+    vertical-align: text-top;
+    color: #080707;
+}
+  .badge i {
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+  .__opened .badge i {
+    margin-top: 2px;
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+  .User-avtar span {
+    width: 190px;
+    font-size: 16px;
+    position: absolute;
+    display: inline-block;
+    min-width: 90px;
+    top: 5px;
+    left: -200px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  .User-Dropdown {
+    display: none;
+    position: absolute;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 0px 0px 8px rgba(214, 214, 214, 0.78);
+    list-style: none;
+    padding: 0 20px;
+    width: 175px;
+    margin: 0;
+    top: 70px;
+    right: -9%;
+}
+  .User-Dropdown:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -0.5em;
+    right: 0px;
+    box-sizing: border-box;
+    border: 7px solid black;
+    border-color: transparent transparent #fff #fff;
+    transform-origin: 0 0;
+    transform: rotate(135deg);
+    box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
+}
+  .User-Dropdown.U-open {
+    display: block;
+}
+  .User-Dropdown > li {
+    padding: 0px;
+    line-height: 47px;
+    border-bottom: 1px solid rgba(215, 215, 215, 0.17);
+}
+  .User-Dropdown > li:last-child {
+    border-bottom: 0px;
+}
+  .User-Dropdown > li > a {
+    font-size: 13px;
+    padding: 15px 5px 16px 10px;
+    text-decoration: none;
+    color: #1787e0;
+    transition: all 0.2s ease-out;
+}
+  .User-Dropdown > li:before {
+    content: '';
+    width: 0px;
+    height: 40px;
+    position: absolute;
+    background: #2196f3;
+    margin-top: 4px;
+    border-radius: 0 1px 1px 0;
+    left: 0px;
+    transition: all 0.2s ease;
+}
+  .User-Dropdown > li:hover:before {
+    width: 5px;
+    border-radius: 30px;
+}
+  .User-Dropdown > li a:hover {
+    margin-left: 5px;
+}
+@media screen and (max-width: 550px){
+  ._username {
+    visibility:hidden;
+  }
+}
+
+/* Styles for Cards */
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #FFFFFF;
+}
+
+body {
+  color: #272727;
+  font-family: 'Quicksand', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 0px;
+  margin: 0px;
+}
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  color: #424242;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.04) translateZ(0);
+}
+
+.content_images {
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.content_images:hover {
+  transform: translateY(-5px) scale(1.04) translateZ(0);
+}
+.card_content {
+  padding: 1rem;
+  border-top: black 2px solid;
+}
+
+.card_title {
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+  text-align: center;
+}
+
+.card_text {
+  color: #000000;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.card_icon {
+    text-align: center;
+}
+
+.dropdown-divider {
+    display: block;
+    height: 0;
+    margin: 0;
+    border-top: 1px solid #000000;
+}
+.login_button {
+    padding: 5px;
+    font-size: 0.9rem;
+}
+.login_button:hover {
+  color: #272727;
+}
+  </style>
+</head>
+<body>
+
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends "school/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+    .topnav {
+  overflow: hidden;
+  background-color: #0b9ddc;
+}
+</style>
+<div class="topnav">
+  <h1 style="font-family:system-ui">E - LIBRARY</h1>
+</div>
+
+<div class="main">
+
+    <ul class="cards">
+    {% for book in data %}
+    <li class="cards_item">
+        <div class="card">
+            <div class="card_icon"><span><img src="{{book.book_pic.url}}" alt="book_cover" style="object-fit: cover; height: 250px;"></span></div>
+            <div class="card_content">
+                   <h2 class="card_title">{{book.book_name}}</h2>
+                   <p class="card_text"></p>
+                   <p class="card_text"><b>Book By</b> <a href="https://www.google.com/search?q={{book.book_author}}" target="_blank">{{book.book_author}}</a><b>
+
+                    {% if book.book_pub_date|length == 4 %}
+                    in
+                    {% else %}
+                    on
+                    {% endif %}
+
+                    {{book.book_pub_date}}
+
+                    </b></p>
+                   <p class="card_text">{{book.book_desc}}</p>
+                   <p class="card_text">
+                       <div style="display: flex; font-size: 0.7rem; font-weight: bolder; flex-direction: row; flex-wrap: wrap; align-content: space-between; justify-content: space-evenly; align-items: center;">
+                        <div>
+                            <p style="padding: 5px; text-align: center; border-radius: 15px;"> {{book.book_tag1}} </p>
+                           </div>
+                            <div>
+                                <p style="padding: 5px; text-align: center; border-radius: 15px;"> {{book.book_tag2}} </p>
+                            </div>
+                            <div>
+                                <p style="padding: 5px; text-align: center; border-radius: 15px;"> {{book.book_tag3}} </p>
+                            </div>
+                            <div>
+                                <p style="padding: 5px; text-align: center; border-radius: 15px;"> {{book.book_tag4}} </p>
+                            </div>
+                       </div>
+                   </p>
+                   <p class="card_text">
+                       <div style="display: flex; justify-content: space-between">
+
+                           <div>
+                            <a href="{{book.book_file.url}}">Preview Book</a>
+                           </div>
+                       </div>
+                   </p>
+             </div>
+
+
+       </div>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+<!--{% endblock %}-->
